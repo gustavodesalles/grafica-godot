@@ -1,0 +1,75 @@
+[gd_scene load_steps=3 format=3 uid="uid://b0p6od2dhydot"]
+
+[ext_resource type="PackedScene" uid="uid://dna5q1y5jruig" path="res://robot-early-7.glb" id="1_8t65w"]
+[ext_resource type="AnimationLibrary" uid="uid://ko2xlfpklmsp" path="res://new_animations.glb" id="2_dd4ab"]
+
+[node name="robot-early-7" instance=ExtResource("1_8t65w")]
+
+[node name="metarig" parent="." index="0"]
+transform = Transform3D(0.988401, -0.106589, 0.108177, 0.1192, 0.985866, -0.117731, -0.0940995, 0.12926, 0.987136, 0.208299, -0.0165405, -0.215536)
+
+[node name="Skeleton3D" parent="metarig" index="0"]
+bones/1/rotation = Quaternion(0.0707935, 0.0107334, -0.00905407, 0.997392)
+bones/2/rotation = Quaternion(0.142802, 0.027413, -0.0426757, 0.988451)
+bones/6/rotation = Quaternion(0.377577, 0.191478, 0.880749, -0.21226)
+bones/7/rotation = Quaternion(0.204867, 0.0334034, -0.343069, 0.916088)
+bones/10/rotation = Quaternion(-0.302942, 0.22933, 0.895615, 0.231318)
+bones/11/rotation = Quaternion(0.121473, -0.0354016, 0.203418, 0.970882)
+bones/15/rotation = Quaternion(0.942708, -0.0468811, -0.151192, 0.293675)
+bones/16/rotation = Quaternion(0.526675, 0.152243, -0.00532184, 0.836306)
+bones/17/rotation = Quaternion(-0.1868, -0.505762, 0.0174143, 0.842026)
+bones/18/rotation = Quaternion(-0.320199, 0.703522, -0.563668, -0.291219)
+bones/22/rotation = Quaternion(0.968812, -0.0688885, 0.165955, 0.170636)
+bones/23/rotation = Quaternion(0.296243, -0.112044, 0.0389089, 0.94772)
+bones/24/rotation = Quaternion(-0.239474, 0.50922, -0.0918658, 0.821528)
+bones/25/rotation = Quaternion(0.320176, 0.703567, -0.563612, 0.291244)
+
+[node name="Cone" parent="metarig/Skeleton3D" index="0"]
+transform = Transform3D(0.974185, 0.218584, 0.0564393, -0.180505, 0.904339, -0.386767, -0.135581, 0.366595, 0.920449, 0.251275, 3.11641, 0.53665)
+
+[node name="Cone_001" parent="metarig/Skeleton3D" index="1"]
+transform = Transform3D(0.974185, 0.218584, 0.0564393, -0.180505, 0.904339, -0.386767, -0.135581, 0.366595, 0.920449, 0.251275, 3.11641, 0.53665)
+
+[node name="Head" parent="metarig/Skeleton3D" index="2"]
+transform = Transform3D(0.182694, 0.0280768, 0.0103981, -0.015758, 0.221966, -0.0712564, -0.0178237, 0.0915472, 0.16958, 0.0370495, 2.5071, 0.136415)
+
+[node name="Lower_Arm" parent="metarig/Skeleton3D" index="3"]
+transform = Transform3D(0.194925, -0.0371817, -0.127815, 0.120459, 0.145716, 0.141319, 0.0566419, -0.181932, 0.139309, 1.09834, 1.45426, -0.049278)
+
+[node name="Upper_Arm" parent="metarig/Skeleton3D" index="4"]
+transform = Transform3D(0.195153, -0.127272, -0.0378393, 0.119373, 0.19763, -0.0490642, 0.0581355, 0.0214286, 0.227762, 1.08902, 1.46873, -0.0477087)
+
+[node name="Lower_Arm_001" parent="metarig/Skeleton3D" index="5"]
+transform = Transform3D(0.166018, 0.0690312, 0.15293, -0.140187, 0.175283, 0.0730642, -0.0921955, -0.142216, 0.164283, -0.0488183, 0.605019, -0.535643)
+
+[node name="Upper_Arm_001" parent="metarig/Skeleton3D" index="6"]
+transform = Transform3D(0.166473, 0.147822, 0.0784238, -0.138854, 0.183763, -0.051628, -0.0933858, -0.0097222, 0.216562, -0.0350336, 0.627153, -0.544099)
+
+[node name="Upper_Torso" parent="metarig/Skeleton3D" index="7"]
+transform = Transform3D(0.282181, 0.00542437, 0.00578083, -0.00484468, 0.280943, -0.0271354, -0.00627462, 0.0270255, 0.280926, 0.00580161, 2.03013, 0.0263924)
+
+[node name="Foot" parent="metarig/Skeleton3D" index="8"]
+transform = Transform3D(0.219387, 0.0269263, 0.0175982, -0.0211605, 0.21217, -0.0608376, -0.0242271, 0.0585146, 0.212495, 0.260217, 1.02955, 0.194099)
+
+[node name="Lower_Leg" parent="metarig/Skeleton3D" index="9"]
+transform = Transform3D(0.220098, 0.0244225, 0.011214, -0.0160032, 0.193441, -0.10719, -0.0215895, 0.10559, 0.193778, 0.252953, 0.97512, 0.340629)
+
+[node name="Upper_Leg" parent="metarig/Skeleton3D" index="10"]
+transform = Transform3D(0.220166, 7.96252e-06, 0.0263108, -0.0154606, 0.179452, 0.129318, -0.0212892, -0.130239, 0.178185, 0.254752, 0.991101, 0.347176)
+
+[node name="Foot_001" parent="metarig/Skeleton3D" index="11"]
+transform = Transform3D(0.210158, 0.0264303, -0.065577, -0.0172208, 0.218598, 0.0329161, 0.0685737, -0.0261048, 0.20924, 0.109962, 0.881721, 0.0707983)
+
+[node name="Lower_Leg_001" parent="metarig/Skeleton3D" index="12"]
+transform = Transform3D(0.207483, 0.0264052, -0.0736113, -0.0450161, 0.210992, -0.051199, 0.0639485, 0.0628534, 0.202794, 0.104356, 0.800838, 0.335056)
+
+[node name="Upper_Leg_001" parent="metarig/Skeleton3D" index="13"]
+transform = Transform3D(0.216385, 0.0420646, -0.0239414, -0.0311857, 0.205049, 0.0784072, 0.0370146, -0.0731492, 0.20602, 0.127172, 0.849017, 0.277293)
+
+[node name="Lower_Torso" parent="metarig/Skeleton3D" index="14"]
+transform = Transform3D(0.183451, -3.21965e-15, 0, 2.9976e-15, 0.183451, 4.65661e-10, 0, -4.65661e-10, 0.183451, -7.54952e-15, 1.58571, -1.86265e-09)
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="." index="1"]
+libraries = {
+"new_animations": ExtResource("2_dd4ab")
+}
