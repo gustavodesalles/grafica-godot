@@ -1,8 +1,22 @@
-[gd_scene load_steps=15 format=3 uid="uid://btdku06waf5h1"]
+[gd_scene load_steps=16 format=3 uid="uid://btdku06waf5h1"]
 
 [ext_resource type="Script" path="res://character.gd" id="1_kx4fr"]
 [ext_resource type="PackedScene" uid="uid://dna5q1y5jruig" path="res://robot-early-7.glb" id="2_s6fi7"]
 [ext_resource type="AnimationLibrary" uid="uid://ko2xlfpklmsp" path="res://new_animations.glb" id="3_joopp"]
+
+[sub_resource type="AnimationNodeBlend3" id="AnimationNodeBlend3_28req"]
+
+[sub_resource type="AnimationNodeTransition" id="AnimationNodeTransition_0afcq"]
+xfade_time = 0.2
+input_0/name = "false"
+input_0/auto_advance = false
+input_0/reset = true
+input_1/name = "true"
+input_1/auto_advance = false
+input_1/reset = true
+
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_q2yf7"]
+animation = &"new_animations/ginga"
 
 [sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_e8rvo"]
 animation = &"new_animations/idle"
@@ -13,24 +27,22 @@ animation = &"new_animations/jump"
 [sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_51ael"]
 animation = &"new_animations/walk"
 
-[sub_resource type="AnimationNodeBlend2" id="AnimationNodeBlend2_ydm42"]
-
-[sub_resource type="AnimationNodeOneShot" id="AnimationNodeOneShot_srwaj"]
-
 [sub_resource type="AnimationNodeBlendTree" id="AnimationNodeBlendTree_xmplv"]
-graph_offset = Vector2(-48.9772, 7.26627)
-nodes/Animation/node = SubResource("AnimationNodeAnimation_51ael")
-nodes/Animation/position = Vector2(440, 160)
-"nodes/Animation 2/node" = SubResource("AnimationNodeAnimation_e8rvo")
-"nodes/Animation 2/position" = Vector2(420, 20)
-"nodes/Animation 3/node" = SubResource("AnimationNodeAnimation_6k5rn")
-"nodes/Animation 3/position" = Vector2(740, 240)
-nodes/Blend2/node = SubResource("AnimationNodeBlend2_ydm42")
-nodes/Blend2/position = Vector2(836.282, 24.7278)
-nodes/OneShot/node = SubResource("AnimationNodeOneShot_srwaj")
-nodes/OneShot/position = Vector2(1060, 100)
+graph_offset = Vector2(-90.9621, -42.9058)
+nodes/Blend3/node = SubResource("AnimationNodeBlend3_28req")
+nodes/Blend3/position = Vector2(780, 20)
+nodes/do_jump/node = SubResource("AnimationNodeTransition_0afcq")
+nodes/do_jump/position = Vector2(1060, 100)
+nodes/ginga/node = SubResource("AnimationNodeAnimation_q2yf7")
+nodes/ginga/position = Vector2(420, 320)
+nodes/idle/node = SubResource("AnimationNodeAnimation_e8rvo")
+nodes/idle/position = Vector2(420, 20)
+nodes/jump/node = SubResource("AnimationNodeAnimation_6k5rn")
+nodes/jump/position = Vector2(740, 240)
 nodes/output/position = Vector2(1320, 80)
-node_connections = [&"Blend2", 0, &"Animation 2", &"Blend2", 1, &"Animation", &"OneShot", 0, &"Blend2", &"OneShot", 1, &"Animation 3", &"output", 0, &"OneShot"]
+nodes/walk/node = SubResource("AnimationNodeAnimation_51ael")
+nodes/walk/position = Vector2(440, 160)
+node_connections = [&"Blend3", 0, &"ginga", &"Blend3", 1, &"idle", &"Blend3", 2, &"walk", &"do_jump", 0, &"Blend3", &"do_jump", 1, &"jump", &"output", 0, &"do_jump"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_fpetx"]
 albedo_color = Color(0.396078, 1, 1, 1)
@@ -53,65 +65,65 @@ script = ExtResource("1_kx4fr")
 transform = Transform3D(-0.35, 0, -3.0598e-08, 0, 0.35, 0, 3.0598e-08, 0, -0.35, 0, 0, 0)
 
 [node name="metarig" parent="robot-early-7" index="0"]
-transform = Transform3D(0.988528, -0.0456452, -0.143973, 0.0201276, 0.98455, -0.173944, 0.149689, 0.16905, 0.974174, 0.171778, -0.118146, -0.241834)
+transform = Transform3D(0.731983, 0.0533408, -0.679231, 0.00449543, 0.996531, 0.0831032, 0.681307, -0.0638836, 0.729204, -0.0820529, -0.109081, 0.101842)
 
 [node name="Skeleton3D" parent="robot-early-7/metarig" index="0"]
-bones/1/rotation = Quaternion(0.0726285, 0.00508628, -0.00571207, 0.99733)
-bones/2/rotation = Quaternion(0.131063, 0.0424899, -0.0542612, 0.988976)
-bones/6/rotation = Quaternion(0.473169, 0.17209, 0.849754, -0.15625)
-bones/7/rotation = Quaternion(0.166954, 0.0350967, -0.280022, 0.944713)
-bones/10/rotation = Quaternion(-0.235785, 0.234895, 0.927427, 0.170611)
-bones/11/rotation = Quaternion(0.0707693, -0.0359418, 0.119779, 0.989623)
-bones/15/rotation = Quaternion(0.935352, 0.0451507, -0.139105, 0.322068)
-bones/16/rotation = Quaternion(0.430476, 0.145622, 0.0328378, 0.890172)
-bones/17/rotation = Quaternion(-0.246824, -0.557855, 0.0770123, 0.788635)
-bones/18/rotation = Quaternion(-0.320377, 0.703359, -0.563672, -0.291407)
-bones/22/rotation = Quaternion(0.975431, -0.084465, 0.135211, 0.152047)
-bones/23/rotation = Quaternion(0.571321, -0.1373, 0.0669222, 0.806388)
-bones/24/rotation = Quaternion(-0.136596, 0.517495, -0.107568, 0.837836)
-bones/25/rotation = Quaternion(0.320916, 0.702138, -0.565416, 0.290379)
+bones/1/rotation = Quaternion(0.0330329, 0.0594127, 0.0166031, 0.997549)
+bones/2/rotation = Quaternion(0.203362, 0.126851, -0.0457132, 0.969775)
+bones/6/rotation = Quaternion(0.623139, -0.0571706, 0.754034, -0.199658)
+bones/7/rotation = Quaternion(0.219774, 0.0982857, -0.356955, 0.902564)
+bones/10/rotation = Quaternion(-0.422277, -0.105794, 0.82783, 0.353819)
+bones/11/rotation = Quaternion(0.133408, -0.0348715, 0.346121, 0.928002)
+bones/15/rotation = Quaternion(0.954152, 0.096145, -0.169788, 0.226987)
+bones/16/rotation = Quaternion(0.302694, 0.291316, 0.0422411, 0.906491)
+bones/17/rotation = Quaternion(-0.111277, -0.515015, 0.0552105, 0.848133)
+bones/18/rotation = Quaternion(-0.341288, 0.680386, -0.571808, -0.305996)
+bones/22/rotation = Quaternion(0.964349, -0.143748, 0.220505, -0.0273033)
+bones/23/rotation = Quaternion(0.259451, -0.105248, 0.0261198, 0.959649)
+bones/24/rotation = Quaternion(-0.219621, 0.51551, -0.198695, 0.804075)
+bones/25/rotation = Quaternion(0.324189, 0.696606, -0.57471, 0.281691)
 
 [node name="Cone" parent="robot-early-7/metarig/Skeleton3D" index="0"]
-transform = Transform3D(0.969232, 0.233986, 0.0764216, -0.190364, 0.909356, -0.36991, -0.156048, 0.34398, 0.925919, 0.264821, 3.12336, 0.517307)
+transform = Transform3D(0.904488, 0.251489, 0.344463, -0.0889364, 0.901112, -0.424366, -0.417123, 0.353199, 0.837412, 0.298596, 3.11326, 0.464654)
 
 [node name="Cone_001" parent="robot-early-7/metarig/Skeleton3D" index="1"]
-transform = Transform3D(0.969232, 0.233986, 0.0764216, -0.190364, 0.909356, -0.36991, -0.156048, 0.34398, 0.925919, 0.264821, 3.12336, 0.517307)
+transform = Transform3D(0.904488, 0.251489, 0.344463, -0.0889364, 0.901112, -0.424366, -0.417123, 0.353199, 0.837412, 0.298596, 3.11326, 0.464654)
 
 [node name="Head" parent="robot-early-7/metarig/Skeleton3D" index="2"]
-transform = Transform3D(0.182081, 0.0319044, 0.0140796, -0.0174686, 0.22342, -0.0681507, -0.022007, 0.0866243, 0.170588, 0.036453, 2.50832, 0.134028)
+transform = Transform3D(0.170553, 0.0377395, 0.0634624, 0.000959049, 0.21889, -0.0781835, -0.0696694, 0.0954005, 0.154281, 0.0212539, 2.50774, 0.098934)
 
 [node name="Lower_Arm" parent="robot-early-7/metarig/Skeleton3D" index="3"]
-transform = Transform3D(0.21319, -0.0674871, -0.0755652, 0.100418, 0.164119, 0.136733, 0.0134454, -0.155644, 0.176943, 1.04143, 1.42857, -0.062039)
+transform = Transform3D(0.210762, -0.106249, 0.00214174, 0.0924206, 0.185606, 0.112799, -0.0524595, -0.0998816, 0.207332, 0.883419, 1.46723, -0.443794)
 
 [node name="Upper_Arm" parent="robot-early-7/metarig/Skeleton3D" index="4"]
-transform = Transform3D(0.213698, -0.100238, 4.24683e-07, 0.099194, 0.211473, -0.0339771, 0.0144272, 0.0307612, 0.233581, 1.03409, 1.44406, -0.0597861)
+transform = Transform3D(0.204582, -0.0325002, 0.113155, 0.0852648, 0.197339, -0.0974795, -0.0811806, 0.125364, 0.18278, 0.881039, 1.48168, -0.434611)
 
 [node name="Lower_Arm_001" parent="robot-early-7/metarig/Skeleton3D" index="5"]
-transform = Transform3D(0.165422, 0.0592498, 0.157607, -0.120293, 0.196182, 0.0525072, -0.117811, -0.11712, 0.167684, 0.0296943, 0.691795, -0.666023)
+transform = Transform3D(0.210844, 0.0521731, 0.0923965, -0.0678149, 0.224339, 0.0280744, -0.0816092, -0.0516233, 0.215382, 0.249945, 1.08224, -0.821576)
 
 [node name="Upper_Arm_001" parent="robot-early-7/metarig/Skeleton3D" index="6"]
-transform = Transform3D(0.165642, 0.12298, 0.114689, -0.119068, 0.199453, -0.0419042, -0.118743, -0.0284476, 0.202003, 0.0401329, 0.714375, -0.674169)
+transform = Transform3D(0.19932, 0.126435, 0.000294551, -0.0930668, 0.147088, -0.159432, -0.0855821, 0.134515, 0.174058, 0.184237, 0.92874, -0.837569)
 
 [node name="Upper_Torso" parent="robot-early-7/metarig/Skeleton3D" index="7"]
-transform = Transform3D(0.282259, 0.00337705, 0.00269099, -0.00309223, 0.28087, -0.0281315, -0.00301397, 0.0280987, 0.280874, 0.00353629, 2.02997, 0.0274407)
+transform = Transform3D(0.280144, -0.00884894, 0.0336173, 0.00953892, 0.282083, -0.00523949, -0.033428, 0.00633556, 0.280235, -0.005879, 2.03307, 0.00604246)
 
 [node name="Foot" parent="robot-early-7/metarig/Skeleton3D" index="8"]
-transform = Transform3D(0.212045, 0.0042127, 0.0646877, -0.0152238, 0.218312, 0.0356859, -0.0630118, -0.0385681, 0.209063, 0.36703, 0.997015, 0.0795302)
+transform = Transform3D(0.221643, 0.00137506, -0.00614783, -0.00188311, 0.220954, -0.01847, 0.00601169, 0.0185148, 0.220876, 0.520131, 0.953386, 0.172325)
 
 [node name="Lower_Leg" parent="robot-early-7/metarig/Skeleton3D" index="9"]
-transform = Transform3D(0.21896, 0.00111086, 0.034939, 0.0070361, 0.215684, -0.0509521, -0.0342413, 0.0514236, 0.212952, 0.359656, 0.995329, 0.357247)
+transform = Transform3D(0.219176, -0.0330442, -0.00593183, 0.0312724, 0.215199, -0.0433178, 0.0122126, 0.0419818, 0.217379, 0.413929, 0.93791, 0.24504)
 
 [node name="Upper_Leg" parent="robot-early-7/metarig/Skeleton3D" index="10"]
-transform = Transform3D(0.21819, -0.0385646, 0.0084303, 0.0250069, 0.17167, 0.138091, -0.0305443, -0.134934, 0.173277, 0.359348, 1.01243, 0.359859)
+transform = Transform3D(0.213095, -0.0576953, 0.0206629, 0.0423341, 0.19264, 0.101305, -0.0443118, -0.093414, 0.196152, 0.411609, 0.954717, 0.247336)
 
 [node name="Foot_001" parent="robot-early-7/metarig/Skeleton3D" index="11"]
-transform = Transform3D(0.211229, -0.0132935, -0.0661127, -0.0325973, 0.17017, -0.138364, 0.0590341, 0.141529, 0.160155, -0.00805488, 0.957725, 0.173677)
+transform = Transform3D(0.194293, 0.000906587, -0.106839, -0.00985847, 0.220931, -0.0160534, 0.106387, 0.018817, 0.193631, -0.0358744, 0.984931, -0.173047)
 
 [node name="Lower_Leg_001" parent="robot-early-7/metarig/Skeleton3D" index="12"]
-transform = Transform3D(0.21072, 0.0229705, -0.065075, -0.0660595, 0.127627, -0.168857, 0.0199637, 0.179858, 0.128132, 0.102549, 0.752441, 0.205131)
+transform = Transform3D(0.192166, 0.021822, -0.108449, -0.0794847, 0.178423, -0.10494, 0.0769391, 0.129823, 0.162455, 0.0238954, 0.701474, 0.104396)
 
 [node name="Upper_Leg_001" parent="robot-early-7/metarig/Skeleton3D" index="13"]
-transform = Transform3D(0.216744, 0.0456152, -0.0103208, -0.040238, 0.206822, 0.0690713, 0.0238362, -0.0656444, 0.210447, 0.118586, 0.82326, 0.226733)
+transform = Transform3D(0.206222, 0.0585913, -0.05661, -0.0619096, 0.21285, -0.0052283, 0.0529607, 0.0206686, 0.21432, 0.0583114, 0.7558, 0.058825)
 
 [node name="Lower_Torso" parent="robot-early-7/metarig/Skeleton3D" index="14"]
 transform = Transform3D(0.183451, -3.21965e-15, 0, 2.9976e-15, 0.183451, 4.65661e-10, 0, -4.65661e-10, 0.183451, -7.54952e-15, 1.58571, -1.86265e-09)
@@ -122,13 +134,12 @@ libraries = {
 }
 
 [node name="AnimationTree" type="AnimationTree" parent="robot-early-7"]
-active = false
 tree_root = SubResource("AnimationNodeBlendTree_xmplv")
 anim_player = NodePath("../AnimationPlayer")
-parameters/Blend2/blend_amount = 0.99
-parameters/OneShot/active = false
-parameters/OneShot/internal_active = false
-parameters/OneShot/request = 0
+parameters/Blend3/blend_amount = 0.0
+parameters/do_jump/current_state = "false"
+parameters/do_jump/transition_request = ""
+parameters/do_jump/current_index = 0
 
 [node name="body" type="MeshInstance3D" parent="."]
 transform = Transform3D(0.5, 0, 0, 0, 0.5, 0, 0, 0, 0.5, 0, 0.504335, 0)
@@ -145,5 +156,8 @@ transform = Transform3D(0.226944, -0.104863, -9.16742e-10, 0, -1.09278e-08, 0.05
 visible = false
 material_override = SubResource("StandardMaterial3D_oixap")
 mesh = SubResource("PrismMesh_skytg")
+
+[node name="Camera3D" type="Camera3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 0.955273, 0.295725, 0, -0.295725, 0.955273, 0, 1.74766, 1.86851)
 
 [editable path="robot-early-7"]
