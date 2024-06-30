@@ -1,6 +1,6 @@
-extends Node3D
+extends Area3D
 
-const ROTATION = 2
+@export var character : CharacterBody3D
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
@@ -9,9 +9,11 @@ func _ready():
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
-	rotate_y(ROTATION * delta)
+	pass
 
-func _on_area_3d_body_entered(body):
-	if body.is_in_group("player"):
-		print("You got a coin!")
-		queue_free()
+
+func _on_body_entered(body):
+	print("You died.")
+	character.position.x = 0
+	character.position.y = 0
+	character.position.z = 3

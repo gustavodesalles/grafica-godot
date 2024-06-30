@@ -1,12 +1,15 @@
-[gd_scene load_steps=11 format=3 uid="uid://cmb55tg04ip1p"]
+[gd_scene load_steps=20 format=3 uid="uid://cmb55tg04ip1p"]
 
 [ext_resource type="PackedScene" uid="uid://dcj04ju5e00pm" path="res://barrel.tscn" id="1_06rw2"]
+[ext_resource type="Script" path="res://game_behavior.gd" id="1_eynvg"]
 [ext_resource type="PackedScene" uid="uid://c1t722wi463jn" path="res://rocks.tscn" id="2_j8s71"]
 [ext_resource type="PackedScene" uid="uid://c2e18p4g5tsor" path="res://wall.tscn" id="3_0dokb"]
 [ext_resource type="PackedScene" uid="uid://bvun0o4ulmpyn" path="res://dirt.tscn" id="4_dkxri"]
 [ext_resource type="PackedScene" uid="uid://b8o83bxx0o0n0" path="res://column.tscn" id="4_kd3fq"]
 [ext_resource type="PackedScene" uid="uid://btdku06waf5h1" path="res://character.tscn" id="6_u4sn2"]
 [ext_resource type="PackedScene" uid="uid://2tcobsc5xb4v" path="res://coin.tscn" id="7_vqaxh"]
+[ext_resource type="Texture2D" uid="uid://dvxhc0nmqtb0a" path="res://00009-2603777448.png" id="8_r48nk"]
+[ext_resource type="Script" path="res://kill_area.gd" id="9_qc602"]
 
 [sub_resource type="PlaneMesh" id="PlaneMesh_j2bht"]
 size = Vector2(10, 10)
@@ -17,7 +20,26 @@ data = PackedVector3Array(5, 0, 5, -5, 0, 5, 5, 0, -5, -5, 0, 5, -5, 0, -5, 5, 0
 [sub_resource type="Theme" id="Theme_iclnp"]
 default_font_size = 30
 
-[node name="world" type="Node3D"]
+[sub_resource type="PanoramaSkyMaterial" id="PanoramaSkyMaterial_ob07l"]
+panorama = ExtResource("8_r48nk")
+
+[sub_resource type="Sky" id="Sky_clguo"]
+sky_material = SubResource("PanoramaSkyMaterial_ob07l")
+
+[sub_resource type="Environment" id="Environment_6m50t"]
+background_mode = 2
+sky = SubResource("Sky_clguo")
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_mhqhx"]
+
+[sub_resource type="Theme" id="Theme_purxc"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_7iixj"]
+bg_color = Color(0.6, 0.6, 1, 1)
+
+[node name="world" type="Node3D" node_paths=PackedStringArray("win_panel")]
+script = ExtResource("1_eynvg")
+win_panel = NodePath("win_panel")
 
 [node name="level00" type="Node3D" parent="."]
 
@@ -185,7 +207,7 @@ transform = Transform3D(8, 0, 0, 0, 8, 0, 0, 0, 8, 4, -1, -30)
 
 [node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 0.965926, 0.258819, 0, -0.258819, 0.965926, 0, 10, 7)
-light_color = Color(1, 0.782104, 0.587957, 1)
+light_color = Color(1, 0.907464, 0.828349, 1)
 light_energy = 0.515
 shadow_enabled = true
 
@@ -207,8 +229,99 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 3)
 [node name="coin" parent="." instance=ExtResource("7_vqaxh")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1, 0.448098, -3)
 
-[node name="RichTextLabel" type="RichTextLabel" parent="."]
+[node name="coin2" parent="." instance=ExtResource("7_vqaxh")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.0342705, 0.448098, -3)
+
+[node name="coin5" parent="." instance=ExtResource("7_vqaxh")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.80617, 0.448098, -3)
+
+[node name="coin7" parent="." instance=ExtResource("7_vqaxh")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.00869, 0.448098, -3)
+
+[node name="coin6" parent="." instance=ExtResource("7_vqaxh")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.84044, 0.448098, -3)
+
+[node name="coin3" parent="." instance=ExtResource("7_vqaxh")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.97724, 2.85206, 1.5857)
+
+[node name="coin4" parent="." instance=ExtResource("7_vqaxh")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3.02364, 2.91897, -1.11336)
+
+[node name="coin8" parent="." instance=ExtResource("7_vqaxh")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3.02364, 6.92045, -8.99626)
+
+[node name="coin11" parent="." instance=ExtResource("7_vqaxh")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.29598, 6.92045, -8.99626)
+
+[node name="coin9" parent="." instance=ExtResource("7_vqaxh")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3.02364, 6.92045, -10.4838)
+
+[node name="coin10" parent="." instance=ExtResource("7_vqaxh")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.16932, 6.92045, -10.4838)
+
+[node name="coin12" parent="." instance=ExtResource("7_vqaxh")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.922603, 6.92045, -23.6127)
+
+[node name="coin13" parent="." instance=ExtResource("7_vqaxh")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.805061, 6.92045, -23.6127)
+
+[node name="coin14" parent="." instance=ExtResource("7_vqaxh")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.922603, 6.92045, -25.1002)
+
+[node name="coin15" parent="." instance=ExtResource("7_vqaxh")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.931716, 6.92045, -25.1002)
+
+[node name="coin16" parent="." instance=ExtResource("7_vqaxh")]
+transform = Transform3D(0.673529, 0, -0.739161, 0, 1, 0, 0.739161, 0, 0.673529, 0.014878, 6.92045, -23.1936)
+
+[node name="coin17" parent="." instance=ExtResource("7_vqaxh")]
+transform = Transform3D(0.673529, 0, -0.739161, 0, 1, 0, 0.739161, 0, 0.673529, -1.14875, 6.92045, -24.4706)
+
+[node name="coin18" parent="." instance=ExtResource("7_vqaxh")]
+transform = Transform3D(0.673529, 0, -0.739161, 0, 1, 0, 0.739161, 0, 0.673529, 1.11439, 6.92045, -24.1954)
+
+[node name="coin19" parent="." instance=ExtResource("7_vqaxh")]
+transform = Transform3D(0.673529, 0, -0.739161, 0, 1, 0, 0.739161, 0, 0.673529, -0.134546, 6.92045, -25.5661)
+
+[node name="coin_counter" type="RichTextLabel" parent="."]
 offset_right = 149.0
 offset_bottom = 46.0
 theme = SubResource("Theme_iclnp")
-text = "Coins: 0"
+bbcode_enabled = true
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="."]
+environment = SubResource("Environment_6m50t")
+
+[node name="Area3D" type="Area3D" parent="." node_paths=PackedStringArray("character")]
+transform = Transform3D(200, 0, 0, 0, 1, 0, 0, 0, 200, 0, -3.11893, 0)
+script = ExtResource("9_qc602")
+character = NodePath("../character")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Area3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -13.754, 0)
+shape = SubResource("BoxShape3D_mhqhx")
+
+[node name="win_panel" type="Panel" parent="."]
+visible = false
+offset_left = 396.0
+offset_top = 248.0
+offset_right = 866.0
+offset_bottom = 416.0
+theme = SubResource("Theme_purxc")
+theme_override_styles/panel = SubResource("StyleBoxFlat_7iixj")
+
+[node name="RichTextLabel" type="RichTextLabel" parent="win_panel"]
+layout_mode = 0
+offset_left = 127.0
+offset_top = 42.0
+offset_right = 440.0
+offset_bottom = 113.0
+theme_override_colors/default_color = Color(0, 0.376471, 0, 1)
+theme_override_font_sizes/normal_font_size = 50
+bbcode_enabled = true
+text = "You win!"
+deselect_on_focus_loss_enabled = false
+drag_and_drop_selection_enabled = false
+
+[connection signal="child_exiting_tree" from="." to="." method="_on_child_exiting_tree"]
+[connection signal="body_entered" from="Area3D" to="Area3D" method="_on_body_entered"]

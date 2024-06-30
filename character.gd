@@ -44,7 +44,7 @@ func _physics_process(delta):
 
 	if !is_gingando:
 		move_and_slide()
-		print("X: " + str(input_dir.x) + ", Z: " + str(input_dir.y))
+		#print("X: " + str(input_dir.x) + ", Z: " + str(input_dir.y))
 		if velocity.x != 0 or velocity.z != 0:
 			$"robot-early-7/AnimationTree".set("parameters/Blend3/blend_amount", 1.0)
 			if input_dir.x > 0:
