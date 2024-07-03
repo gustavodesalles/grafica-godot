@@ -1,11 +1,19 @@
-[gd_scene load_steps=3 format=3 uid="uid://c1t722wi463jn"]
+[gd_scene load_steps=5 format=3 uid="uid://c1t722wi463jn"]
 
 [ext_resource type="PackedScene" uid="uid://dee0kwexy0j1u" path="res://GLB format/rocks.glb" id="1_ojnpo"]
+[ext_resource type="Texture2D" uid="uid://dwottteta0367" path="res://rock.png" id="2_rum5o"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_ke7xg"]
+albedo_texture = ExtResource("2_rum5o")
+uv1_triplanar = true
 
 [sub_resource type="ConvexPolygonShape3D" id="ConvexPolygonShape3D_8016n"]
 points = PackedVector3Array(-0.30002, 0, -0.5, -0.450078, 0, -0.450078, -0.30002, 0.5, -0.5, 0.299922, 0, -0.5, -0.5, 0, -0.30002, -0.450078, 0.5, -0.450078, -0.150059, 0.5, -0.450078, 0.44998, 0.44998, -0.450078, 0.299922, 0.44998, -0.5, 0.44998, 0, -0.450078, -0.5, 0.5, -0.30002, -0.5, 0, 0.299922, 0.44998, 0.5, 0.149961, 0.5, 0.5, 0.299922, 0.5, 0.44998, -0.30002, 0.5, 0, -0.30002, -0.5, 0.44998, 0.299922, -0.450078, 0.44998, 0.44998, -0.450078, 0.5, -0.150059, -0.450078, 0, 0.44998, 0.5, 0, 0.299922, 0.44998, 0.5, 0.44998, -0.30002, 0.44998, 0.5, 0.299922, 0.5, 0.5, 0.149961, 0.5, 0.44998, -0.30002, 0, 0.5, 0.44998, 0, 0.44998, 0.299922, 0, 0.5)
 
 [node name="rocks" instance=ExtResource("1_ojnpo")]
+
+[node name="rocks" parent="." index="0"]
+surface_material_override/0 = SubResource("StandardMaterial3D_ke7xg")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="." index="1"]
 shape = SubResource("ConvexPolygonShape3D_8016n")

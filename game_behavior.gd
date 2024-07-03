@@ -16,9 +16,7 @@ func _process(delta):
 
 func _on_child_exiting_tree(node):
 	if node.is_in_group("coin"):
-		print("Updating coin counter...")
 		coin_count += 1
-		print(str(coin_count))
 		coin_counter.text = coin_text + str(coin_count)
 		if coin_count == 19:
 			win_panel.visible = true

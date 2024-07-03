@@ -1,10 +1,11 @@
 [gd_scene load_steps=5 format=3 uid="uid://bvun0o4ulmpyn"]
 
 [ext_resource type="PackedScene" uid="uid://cqyoo0xkbfymd" path="res://GLB format/dirt.glb" id="1_egaaa"]
-[ext_resource type="Texture2D" uid="uid://3imql0rmbe5o" path="res://robot-early-7_albedo.png" id="2_gb01t"]
+[ext_resource type="Texture2D" uid="uid://xi1ggpe8674g" path="res://dirt.png" id="2_wyj6d"]
 
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_uvhxm"]
-albedo_texture = ExtResource("2_gb01t")
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_w1af4"]
+albedo_texture = ExtResource("2_wyj6d")
+uv1_triplanar = true
 
 [sub_resource type="ConvexPolygonShape3D" id="ConvexPolygonShape3D_tq08g"]
 points = PackedVector3Array(-0.5, 0, -0.5, -0.5, 0.9, -0.5, 0.5, 0, -0.5, -0.5, 0, 0.5, -0.5, 0.9, 0.5, 0.5, 0.9, -0.5, 0.5, 0, 0.5, 0.5, 0.9, 0.5)
@@ -12,7 +13,7 @@ points = PackedVector3Array(-0.5, 0, -0.5, -0.5, 0.9, -0.5, 0.5, 0, -0.5, -0.5, 
 [node name="dirt" instance=ExtResource("1_egaaa")]
 
 [node name="dirt" parent="." index="0"]
-surface_material_override/0 = SubResource("StandardMaterial3D_uvhxm")
+surface_material_override/0 = SubResource("StandardMaterial3D_w1af4")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="." index="1"]
 shape = SubResource("ConvexPolygonShape3D_tq08g")

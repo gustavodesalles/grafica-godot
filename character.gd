@@ -47,10 +47,6 @@ func _physics_process(delta):
 		#print("X: " + str(input_dir.x) + ", Z: " + str(input_dir.y))
 		if velocity.x != 0 or velocity.z != 0:
 			$"robot-early-7/AnimationTree".set("parameters/Blend3/blend_amount", 1.0)
-			if input_dir.x > 0:
-				$"robot-early-7".rotate_y(deg_to_rad(-3))
-			elif input_dir.x < 0:
-				$"robot-early-7".rotate_y(deg_to_rad(3))
 		else:
 			$"robot-early-7/AnimationTree".set("parameters/Blend3/blend_amount", 0.0)
 

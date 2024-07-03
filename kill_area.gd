@@ -13,7 +13,6 @@ func _process(delta):
 
 
 func _on_body_entered(body):
-	print("You died.")
 	character.position.x = 0
 	character.position.y = 0
 	character.position.z = 3

@@ -1,11 +1,19 @@
-[gd_scene load_steps=3 format=3 uid="uid://b8o83bxx0o0n0"]
+[gd_scene load_steps=5 format=3 uid="uid://b8o83bxx0o0n0"]
 
 [ext_resource type="PackedScene" uid="uid://crnibl38d1a6u" path="res://GLB format/column.glb" id="1_fb2ny"]
+[ext_resource type="Texture2D" uid="uid://cmdbrs4dgyfta" path="res://albedo.png" id="2_lj3vk"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_6darv"]
+albedo_texture = ExtResource("2_lj3vk")
+uv1_triplanar = true
 
 [sub_resource type="ConvexPolygonShape3D" id="ConvexPolygonShape3D_hnk3f"]
 points = PackedVector3Array(0.199976, 1.09999, 0.25, 0.249995, 1.09999, 0.19998, -0.20003, 1.09999, 0.25, 0.199976, 0, 0.25, 0.249995, 1.09999, -0.200029, 0.249995, 0, 0.19998, -0.25, 1.09999, 0.19998, -0.20003, 0, 0.25, 0.199976, 1.09999, -0.25, 0.249995, 0, -0.200029, -0.25, 1.09999, -0.200029, -0.25, 0, 0.19998, -0.20003, 1.09999, -0.25, 0.199976, 0, -0.25, -0.25, 0, -0.200029, -0.20003, 0, -0.25)
 
 [node name="column" instance=ExtResource("1_fb2ny")]
+
+[node name="column" parent="." index="0"]
+surface_material_override/0 = SubResource("StandardMaterial3D_6darv")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="." index="1"]
 shape = SubResource("ConvexPolygonShape3D_hnk3f")
